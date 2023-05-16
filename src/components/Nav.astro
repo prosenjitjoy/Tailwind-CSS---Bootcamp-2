@@ -1,0 +1,89 @@
+---
+import MenuItem from "./MenuItem.astro";
+import MobileMenu from "./MobileMenu.astro";
+import SubMenu from "./SubMenu.astro";
+---
+
+<nav class="sticky top-0 z-10 flex bg-gradient-to-r from-rose-500 to-pink-500">
+    <!-- Logo section inside nav      -->
+    <div class="flex items-center gap-2 p-2">
+        <img src="/images/logo-alt.png" alt="logo" width="50" />
+        <div class="text-2xl font-bold">
+            tw:<span class="text-sky-900">mf</span>
+        </div>
+    </div>
+
+    <!-- Movile navigation  -->
+    <div class="my-auto ml-auto block cursor-pointer pr-4 md:hidden">
+        <div id="mobile-menu" class="group peer space-y-1">
+            <div
+                class="relative top-0 h-1 w-8 rounded-full bg-zinc-200 transition-all group-open:top-2 group-open:rotate-45"
+            >
+            </div>
+            <div
+                class="h-1 w-8 rounded-full bg-zinc-200 opacity-100 group-open:opacity-0"
+            >
+            </div>
+            <div
+                class="relative top-0 h-1 w-8 rounded-full bg-zinc-200 transition-all group-open:-top-2 group-open:-rotate-45"
+            >
+            </div>
+        </div>
+
+        <div
+            class="absolute left-0 top-full hidden w-full bg-gradient-to-r from-rose-500 to-pink-500 peer-open:block"
+        >
+            <MobileMenu label="Home" />
+            <MobileMenu label="Lineup" />
+            <div
+                id="ticket-menu"
+                class="group relative h-full cursor-pointer text-pink-200 transition-colors ease-in-out hover:bg-white/10 hover:text-zinc-200"
+            >
+                <div class="p-4 text-center font-bold">Ticket</div>
+                <div class="hidden group-open:block">
+                    <div
+                        class="relative p-4 text-center text-pink-200 transition-colors ease-in-out hover:bg-white/5 hover:text-zinc-200"
+                    >
+                        <span>Single day ticket</span>
+                    </div>
+                    <div
+                        class="relative p-4 text-center text-pink-200 transition-colors ease-in-out hover:bg-white/5 hover:text-zinc-200"
+                    >
+                        <span>7 day ticket</span>
+                    </div>
+                </div>
+            </div>
+            <MobileMenu label="Support" />
+        </div>
+    </div>
+
+    <!-- Desktop navigation items  -->
+    <div class="hidden flex-1 items-center justify-end md:flex">
+        <MenuItem label="Home" />
+        <MenuItem label="Lineup" />
+        <MenuItem label="Tickets">
+            <SubMenu />
+        </MenuItem>
+        <MenuItem label="Support" />
+    </div>
+</nav>
+
+<script lang="ts">
+    window.onload = () => {
+        const mobileMenu = document.getElementById("mobile-menu");
+        mobileMenu.addEventListener("click", () => {
+            mobileMenu.classList.toggle("open");
+        });
+
+        const ticketMenuItem = document.getElementById("ticket-menu");
+        ticketMenuItem.addEventListener("click", () => {
+            ticketMenuItem.classList.toggle("open");
+        });
+
+        const darkModeToggle = document.getElementById("dark-mode");
+        darkModeToggle.addEventListener("click", () => {
+            console.log("hello");
+            document.body.classList.toggle("dark");
+        });
+    };
+</script>

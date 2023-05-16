@@ -1,0 +1,21 @@
+---
+import { Icon } from "astro-icon";
+---
+
+<div
+    id="dark-mode"
+    class="fixed right-0 top-24 z-10 inline-block w-12 cursor-pointer overflow-hidden rounded-l-lg bg-zinc-900 p-2 text-3xl text-zinc-200 dark:bg-zinc-200 dark:text-zinc-900"
+>
+    <Icon name="ic:baseline-light-mode" class="transition dark:hidden" />
+    <Icon name="ic:baseline-dark-mode" class="hidden transition dark:block" />
+</div>
+
+<script lang="ts">
+    window.onload = () => {
+        const darkModeToggle = document.getElementById("dark-mode");
+        darkModeToggle.addEventListener("click", () => {
+            console.log("hello");
+            document.body.classList.toggle("dark");
+        });
+    };
+</script>

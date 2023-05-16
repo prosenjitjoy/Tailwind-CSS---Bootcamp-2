@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    @font-face {
+        font-family: "Inter";
+        src: url("/fonts/Inter.var.woff2") format("woff2");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    h1 {
+        @apply text-6xl font-bold;
+    }
+
+    h2 {
+        @apply text-5xl font-bold;
+    }
+
+    h3 {
+        @apply text-4xl font-bold;
+    }
+
+    h4 {
+        @apply text-3xl font-bold;
+    }
+
+    h5 {
+        @apply text-2xl font-bold;
+    }
+
+    h6 {
+        @apply text-xl font-bold;
+    }
+}
